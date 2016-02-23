@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$.getJSON("https://api.coindesk.com/v1/bpi/currentprice.json", function( data ) {
+  var items = [];
+  var price;
+    $.each( data, function( key, val ) {
+      if (key == "bpi") {
+       price = val.USD.rate; 
+      }
+    });
+  $("<h5 align='center'>" + price + "</h5>").appendTo( ".btc_price" );
+});
